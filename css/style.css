@@ -65,12 +65,6 @@ main{
     margin: auto;
 }
 
-.block{
-    border-radius: 5px;
-    box-shadow: 0px 0px 50px 0px rgb(0 0 0 / 30%);
-    background-color: var(--color-white);
-}
-
 .flex-auto{
     padding: 25px 10px;
     display: flex;
@@ -170,6 +164,9 @@ main{
     max-width: 600px;
     width: calc(100% - 40px);
     margin: 25px auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 50px 0px rgb(0 0 0 / 30%);
+    background-color: var(--color-white);
 }
 
 .search_moto form{
@@ -265,6 +262,9 @@ section.banner img{
 
 .card-module{
     max-width: 300px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 50px 0px rgb(0 0 0 / 30%);
+    background-color: var(--color-white);
 }
 .card-module img{
     border-radius: 5px 5px 0 0;
@@ -276,7 +276,11 @@ section.banner img{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    margin: 25px auto;
     padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 50px 0px rgb(0 0 0 / 30%);
+    background-color: var(--color-white);
 }
 
 .technical-profile .table{
@@ -308,14 +312,20 @@ section.banner img{
     width: 50%;
 }
 
+.technical-profile a{
+    position: absolute;
+    bottom: 10px;
+    left: 33%;
+}
+
 @media screen and (max-width: 1250px) {
     .technical-profile{
         flex-direction: column;
-}
+        max-width: 550px;
+    }
     
     .technical-profile img, .technical-profile .table{
-        max-width: 600px;
-
+        width: 100%;
     }
 }
 
@@ -326,5 +336,56 @@ section.banner img{
 footer .container{
     color: var(--color-grey);
     padding: 10px;
-    text-align: center;
+}
+
+footer div{
+    display: flex;
+    flex-flow: row wrap;
+    border-bottom: 1px solid var(--color-white);
+}
+
+footer h2{
+    color: var(--color-red);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+footer div ul{
+    list-style: none;
+}
+
+footer a{
+    text-decoration: none;
+    color: var(--color-white);
+    transition-duration: 0.5s;
+}
+
+footer a:hover{
+    color: var(--color-red);
+    text-decoration: underline;
+}
+
+
+@media screen and (min-width: 401px){
+    footer aside {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (min-width: 650px){
+    footer aside {
+        width: 33%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    footer div{
+        flex-flow: column;
+        align-items: center;
+    }
+    
+    footer aside {
+        min-width: 200px;
+    }
 }

@@ -24,7 +24,7 @@ if(!$moto){
     <h3 class="txt-center uppercase"><?php echo $moto['accroche']; ?></h3>
     <div class="modules flex-auto">
         <?php foreach (findModuleByMoto($moto['id']) as $module) { ?>
-        <div class="card-module block">
+        <div class="card-module">
             <img src="<?php echo 'image/module/' . $module['picture'] ?>" alt="<?php echo $module['name'] ?>">
             <h4 class="p-10 txt-center"><?php echo $module['name'] ?></h4>
             <p class="p-10"><?php echo $module['description'] ?></p>
@@ -32,7 +32,7 @@ if(!$moto){
         <?php } ?>
     </div>
 
-    <div class="technical-profile block">
+    <div class="technical-profile">
         <div class="table">
             <h4>Fiche Technique</h4>
             <table>

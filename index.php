@@ -12,7 +12,7 @@ require_once './components/head.php';
 </section>
 
 
-<section class='search_moto block p-10'>
+<section class='search_moto p-10'>
     <form method="GET">
         <div class="form_field">
             <label for="searchType">Type:</label>
