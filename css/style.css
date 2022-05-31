@@ -156,6 +156,23 @@ main{
     }
 }
 
+.flash-error {
+    border-radius: 5px;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    padding: 5px 10px;
+    margin: 10px 0;
+}
+
+.flash-success {
+    border-radius: 5px;
+    background-color: var(--color-green);
+    color: var(--color-white);
+    padding: 5px 10px;
+    margin: 10px auto;
+    max-width: 1320px;
+}
+
 
 
 /* ----- ----- -----*/
