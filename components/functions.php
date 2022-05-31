@@ -182,6 +182,32 @@ function getFlashMsg(): array
 }
 
 
+// ----- Profil User -----
+function buildUserPictureName(array $user): string
+{
+    return md5($user['id'] . '_' . $user['firstname']);
+}
+
+function getUserPicture(array $user, bool $withDefault = true): ?string
+{
+    $name = buildUserPictureName($user);
+    $files = scandir('image/profile');
+
+    foreach ($files as $file) {
+        if (strstr($file, $name) !== false) {
+            return 'image/profile/' . $file;
+        }
+    }
+
+    if ($withDefault) {
+        return 'image/profile/default.jpg';
+    }
+
+    return null;
+}
+
+
+
 // ----- Security -----
 function findUserByEmail(string $email): ?array
 {
@@ -330,8 +356,8 @@ function insertUser(string $firstname, string $lastname, string $email, string $
     global $db;
 
     $query = <<<SQL
-        INSERT INTO user (firstname, lastname, email, password, picture, is_admin, created_at) 
-        VALUES (:firstname, :lastname, :email, :password, 'default.jpg', 0, NOW());
+        INSERT INTO user (firstname, lastname, email, password, is_admin, created_at) 
+        VALUES (:firstname, :lastname, :email, :password, 0, NOW());
     SQL;
 
     $stmt = $db->prepare($query);

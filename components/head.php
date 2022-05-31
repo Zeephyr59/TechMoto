@@ -36,11 +36,13 @@
                 </ul>
             </div>
         </nav>
+        <div class="container">
         <?php
         foreach (getFlashMsg('success') as $flash) {
             echo '<p class="container pt-10 flash flash-' . $flash['type'] . '">' . $flash['content'] . '</p>';
         };
         ?>
+        </div>
     </header>
 
     <main>
