@@ -32,7 +32,21 @@
         return $stmt->fetchAll();
     }
 
-    function getCardMoto(string $order = null, int $limit = null): ?array
+    function getAllCylindre(): array
+    {
+        global $db;
+
+        $query = <<<SQL
+                SELECT cylindre_global from moto
+                GROUP BY cylindre_global
+            SQL;
+
+        $stmt = $db->query($query);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    function getCardMoto(string $order = null, int $limit = null, string $type = null, string $marque = null, string $cylindreGlobal = null): ?array
     {
         global $db;
 
@@ -40,22 +54,58 @@
             SELECT moto.id, moto.name, moto.released_in, moto.price, moto.thumbnail, marque.name as marque
             FROM moto
             LEFT JOIN marque ON marque.id = moto.marque_id
+            LEFT JOIN type ON type.id = moto.type_id
         SQL;
 
 
+        $clauses = [];
+
+        if($type){
+            $clauses[] = " moto.type_id = :type ";
+        }
+
+        if ($marque) {
+            $clauses[] = " moto.marque_id = :marque ";
+        }
+
+        if ($cylindreGlobal) {
+            $clauses[] = " moto.cylindre_global = :cylindreGlobal ";
+        }
+
+        if (count($clauses) > 0) {
+            $query .= ' WHERE ' . implode(' AND ', $clauses);
+        }
+
         if($order === 'rand'){
             $query .= " ORDER BY RAND()";
+        }
+
+        if($order === 'marque'){
+            $query .= " ORDER BY moto.marque_id, moto.name";
         }
         if($limit){
             $query .= " LIMIT :limit";
         }
         
         $stmt = $db->prepare($query);
-        
-        $stmt->bindValue('limit', $limit, PDO::PARAM_INT);
-        
+
+        if ($type) {
+            $stmt->bindValue('type', $type, PDO::PARAM_INT);
+        }
+
+        if ($marque) {
+            $stmt->bindValue('marque', $marque, PDO::PARAM_INT);
+        }
+
+        if ($cylindreGlobal) {
+            $stmt->bindValue('cylindreGlobal', $cylindreGlobal, PDO::PARAM_INT);
+        }
+
+        if ($limit) {
+            $stmt->bindValue('limit', $limit, PDO::PARAM_INT);
+        }
+
         $stmt->execute();
-        
         return $stmt->fetchAll();
     }
 

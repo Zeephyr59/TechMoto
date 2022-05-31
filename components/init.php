@@ -3,7 +3,7 @@
 
         session_start();
 
-        $db = new PDO('mysql:dbname=techmoto;host=localhost', 'admin', 'admin', array(
+        $db = new PDO('mysql:dbname=techmoto;host=localhost', 'root', '', array(
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
         ));
