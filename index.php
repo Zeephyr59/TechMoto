@@ -24,13 +24,13 @@ else{
 </section>
 
 
-<section class='search_moto p-10'>
+<section class='form p-10'>
     <form method="GET">
         <div class="form_field">
             <label for="searchType">Type:</label>
             <select name="searchType" id="searchType">
                 <option value="">Toutes</option>
-                <?php foreach (getAllType() as $type) { ?>
+                <?php foreach (getAllExistType() as $type) { ?>
                     <option value="<?php echo $type['id'] ?>" <?php if (isset($searchByType)) {
                                                                     echo $searchByType == $type['id'] ? "selected" : "";
                                                                 } ?>><?php echo $type['name'] ?></option>
@@ -41,7 +41,7 @@ else{
             <label for="searchMarque">Marque:</label>
             <select name="searchMarque" id="searchMarque">
                 <option value="">Toutes</option>
-                <?php foreach (getAllMarque() as $marque) { ?>
+                <?php foreach (getAllExistMarque() as $marque) { ?>
                     <option value="<?php echo $marque['id'] ?>" <?php if (isset($searchByMarque)) {
                                                                     echo $searchByMarque == $marque['id'] ? "selected" : "";
                                                                 } ?>><?php echo $marque['name'] ?></option>

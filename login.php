@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user === null) {
         $errors[] = 'Informations incorrectes';
     } else if (password_verify($password, $user['password'])) {
-        login($user['id']);
+        login($user);
         addFlash('success', 'Vous êtes bien connecté');
         header('Location: http://localhost/D%C3%A9veloppement/Amigraf_PHP/Projets/Techmoto');
         die();

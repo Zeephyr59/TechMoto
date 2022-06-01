@@ -87,7 +87,7 @@ main{
     padding: 0 15px;
 }
 
-.navbar a {
+.navbar a, .navbar li {
     text-decoration: none;
     color: var(--color-white);
     transition-duration: .5s;
@@ -112,11 +112,31 @@ main{
     width: calc(100% - 240px);
 }
 
-.list {
+ul{
     list-style: none;
+}
+.list {
     display: flex;
     align-items: center;
     gap: 25px;
+}
+
+li{
+    position: relative;
+}
+li ul{
+    display: none;
+    border-top: 1px solid var(--color-white);
+    border-radius: 0 0 5px 5px;
+    background-color: var(--color-dark);
+    padding: 10px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+}
+
+li:hover ul{
+    display: block;
 }
 
 #toggler,
@@ -176,34 +196,6 @@ main{
 
 /* ----- ----- -----*/
 /* ----- INDEX ----- */
-.search_moto{
-    max-width: 600px;
-    width: calc(100% - 40px);
-    margin: 25px auto;
-    border-radius: 5px;
-    box-shadow: 0px 0px 50px 0px rgb(0 0 0 / 30%);
-    background-color: var(--color-white);
-}
-
-.search_moto form{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-}
-
-@media screen and (max-width: 550px) {
-    .search_moto{
-        max-width: 200px;
-        margin: auto;
-    }
-
-        .search_moto form{
-        flex-flow: column wrap;
-    }
-}
-
 .card-moto{
     max-width: 300px;
     position: relative;
@@ -418,6 +410,34 @@ footer a:hover{
     }
 }
 
+/* ---------- */
+/* Formularie */
+.form {
+    max-width: 600px;
+    width: calc(100% - 40px);
+    margin: 25px auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 50px 0px rgb(0 0 0 / 30%);
+    background-color: var(--color-white);
+}
 
+.form form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+@media screen and (max-width: 550px) {
+    .form {
+        max-width: 200px;
+        margin: auto;
+    }
+
+    .form form {
+        flex-flow: column wrap;
+    }
+}
 
 
