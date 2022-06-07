@@ -2,15 +2,19 @@
 require_once './components/init.php';
 require_once './components/head.php';
 
+if (!isLoggedIn() || !isAdmin()) {
+    header('Location: http://localhost/D%C3%A9veloppement/Amigraf_PHP/Projets/Techmoto');
+}
+
+$errors = [];
+
 if ($_GET) {
     $searchByType = $_GET['searchType'] === "" ? null : htmlspecialchars($_GET['searchType']);
     $searchByMarque = $_GET['searchMarque']  === "" ? null : htmlspecialchars($_GET['searchMarque']);
     $searchByCylindre = $_GET['searchCylindre'] === "" ? null : htmlspecialchars($_GET['searchCylindre']);
 
     $motos = getCardMoto('marque', null, $searchByType, $searchByMarque, $searchByCylindre);
-
-}
-else{
+} else {
     $motos = getCardMoto('rand', 3);
 }
 ?>
@@ -54,8 +58,8 @@ else{
                 <option value="">Toutes</option>
                 <?php foreach (getAllCylindre() as $cylindre) { ?>
                     <option value="<?php echo $cylindre['cylindre_global'] ?>" <?php if (isset($searchByCylindre)) {
-                                                                    echo $searchByCylindre == $cylindre['cylindre_global'] ? "selected" : "";
-                                                                } ?>><?php echo $cylindre['cylindre_global'] ?></option>
+                                                                                    echo $searchByCylindre == $cylindre['cylindre_global'] ? "selected" : "";
+                                                                                } ?>><?php echo $cylindre['cylindre_global'] ?></option>
                 <?php } ?>
             </select>
         </div>
@@ -65,7 +69,7 @@ else{
 
 
 <section class='container flex-auto'>
-    <?php if(!empty($motos)){
+    <?php if (!empty($motos)) {
         foreach ($motos as $cardMoto) { ?>
             <div class="card-moto">
                 <div class="card-top">
@@ -77,15 +81,17 @@ else{
                         <span>(<?php echo formatedDate($cardMoto['released_in'], 'Y') ?>)</span>
                     </h2>
                     <h4><?php echo $cardMoto['marque'] ?></h4>
-                    <a href="<?php echo 'single_moto.php?id=' . $cardMoto['id']; ?>" class="link btn btn-red">Détails</a>
+                    <div class="link">
+                        <a href="<?php echo 'single_moto.php?id=' . $cardMoto['id']; ?>" class="btn btn-green">Modifier</a>
+                        <a href="<?php echo 'single_moto.php?id=' . $cardMoto['id']; ?>" class="btn btn-orange">Supprimer</a>
+                    </div>
                 </div>
             </div>
-        <?php } 
+        <?php }
     } else { ?>
         <p class="bold">Aucun véhicules ne correspond à vos critères.</p>
-    <?php }?>
+    <?php } ?>
 </section>
-
 
 <?php
 require_once './components/footer.php';

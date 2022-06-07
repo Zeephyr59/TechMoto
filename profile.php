@@ -3,7 +3,7 @@ require_once './components/init.php';
 require_once './components/head.php';
 
 if (!isLoggedIn()) {
-    header('Location: http://localhost/Formation_Amigraf/D%C3%A9veloppement/PHP/GameList/');
+    header('Location: http://localhost/D%C3%A9veloppement/Amigraf_PHP/Projets/Techmoto');
 }
 
 $errors = [];
@@ -63,7 +63,7 @@ if (isset($_FILES['picture'])) {
             </label>
             <input class="mt-10" type="file" name="picture" id="picture" accept="image/jpeg,image/png">
         </div>
-        <button class="btn-red mt-10">Uploader</button>
+        <button class="btn btn-red mt-10">Uploader</button>
     </form>
 
 </section>

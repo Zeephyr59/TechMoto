@@ -6,7 +6,7 @@ $id_moto = (int) $_GET['id'] ?? 0;
 $moto = findMotoById($id_moto);
 
 if(!$moto){
-    header('LOCATION: http://localhost/Développement/Amigraf_PHP/Projets/Techmoto/index.php');
+    header('LOCATION: http://localhost/Développement/Amigraf_PHP/Projets/Techmoto');
 }
 
 ?>

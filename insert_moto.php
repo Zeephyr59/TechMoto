@@ -2,8 +2,11 @@
 require_once './components/init.php';
 require_once './components/head.php';
 
-$errors = [];
+if (!isLoggedIn() || !isAdmin()) {
+    header('Location: http://localhost/D%C3%A9veloppement/Amigraf_PHP/Projets/Techmoto');
+}
 
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     var_dump($_POST);
@@ -166,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="demarrage">Démarrage: </label>
             <input required type="text" name="demarrage" id="demarrage"></input>
         </div>
-        <button class="btn-red">Vrooom</button>
+        <button class="btn btn-red">Vrooom</button>
     </form>
 </section>
 

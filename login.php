@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" name="password" id="password">
         </div>
 
-        <button class="btn-red">Connexion</button>
+        <button class="btn btn-red">Connexion</button>
     </form>
 </section>
 <?php

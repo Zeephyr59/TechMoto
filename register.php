@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="cgu">J'accepte les conditions d'utilisations</label>
         </div>
 
-        <button class="btn-red">S'inscrire</button>
+        <button class="btn btn-red">S'inscrire</button>
     </form>
 </section>
 <?php
